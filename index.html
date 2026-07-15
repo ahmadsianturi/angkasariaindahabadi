@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PT ANGKASARIA INDAH ABADI – Handmade Marketplace</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* Colors */
+            --primary: #C2410C;
+            --primary-hover: #9A3412;
+            --primary-active: #7C2D12;
+            --secondary: #D4A373;
+            --tertiary: #365314;
+            --bg-page: #FFFBF5;
+            --bg-surface: #FFFFFF;
+            --success: #22C55E;
+            --warning: #F59E0B;
+            --error: #DC2626;
+            --info: #3B82F6;
+            --text-dark: #1C1917;
+            --text-muted: #57534E;
+            --text-light: #A8A29E;
+            --border-light: #E7E5E4;
+            --border-med: #D6D3D1;
+            --border-dark: #A8A29E;
+
+            /* Typography */
+            --font-headline: 'Lora', Georgia, serif;
+            --font-body: 'Open Sans', Arial, sans-serif;
+            --font-mono: 'Source Code Pro', monospace;
+
+            /* Spacing */
+            --space-4: 4px;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --space-48: 48px;
+            --space-64: 64px;
+            --space-96: 96px;
+            --space-128: 128px;
+
+            /* Radius */
+            --radius-none: 0px;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 20px;
+            --radius-full: 9999px;
+
+            /* Transitions */
+            --transition-fast: 150ms ease;
+            --transition-med: 250ms ease;
+            --transition-slow: 350ms ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-page);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        a:hover {
+            color: var(--primary-hover);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-24);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* ===== FOCUS RING ===== */
+        :focus-visible {
+            outline: 3px solid rgba(194, 65, 12, 0.2);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        .display {
+            font-family: var(--font-headline);
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: 0.01em;
+        }
+        .headline {
+            font-family: var(--font-headline);
+            font-size: 36px;
+            font-weight: 600;
+            line-height: 1.25;
+            letter-spacing: 0.005em;
+        }
+        .subhead {
+            font-family: var(--font-headline);
+            font-size: 26px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .body-large {
+            font-family: var(--font-body);
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        .body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        .body-small {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        .caption {
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.4;
+            letter-spacing: 0.02em;
+        }
+        .overline {
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+        .code {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-8);
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+            text-decoration: none;
+            min-height: 42px;
+        }
+
+        .btn--primary {
+            background: var(--primary);
+            color: #FFFFFF;
+        }
+        .btn--primary:hover {
+            background: var(--primary-hover);
+            color: #FFFFFF;
+        }
+        .btn--primary:active {
+            background: var(--primary-active);
+        }
+
+        .btn--secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+        }
+        .btn--secondary:hover {
+            background: #FDF6EC;
+            color: var(--primary);
+        }
+
+        .btn--ghost {
+            background: transparent;
+            color: var(--text-muted);
+        }
+        .btn--ghost:hover {
+            background: #FDF6EC;
+            color: var(--text-dark);
+        }
+
+        .btn--destructive {
+            background: var(--error);
+            color: #FFFFFF;
+        }
+        .btn--destructive:hover {
+            background: #B91C1C;
+        }
+
+        .btn--small {
+            padding: 10px 16px;
+            min-height: 34px;
+            font-size: 13px;
+        }
+        .btn--large {
+            padding: 14px 32px;
+            min-height: 50px;
+            font-size: 17px;
+        }
+
+        .btn:disabled,
+        .btn--disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: border-color var(--transition-fast);
+        }
+        .card:hover {
+            border-color: var(--border-med);
+        }
+
+        .card--elevated {
+            background: var(--bg-page);
+            border: 2px solid var(--border-med);
+        }
+        .card--elevated:hover {
+            border-color: var(--border-dark);
+        }
+
+        .card__image {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            background: #EDE8E0;
+        }
+        .card__image--tall {
+            aspect-ratio: 3 / 4;
+        }
+        .card__image--wide {
+            aspect-ratio: 16 / 9;
+        }
+
+        .card__content {
+            padding: var(--space-20, 20px);
+        }
+
+        /* ===== CHIPS ===== */
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            height: 32px;
+            padding: 0 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-med);
+            background: transparent;
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            white-space: nowrap;
+        }
+        .chip:hover {
+            background: #FDF6EC;
+        }
+        .chip--selected {
+            background: var(--primary);
+            color: #FFFFFF;
+            border-color: var(--primary);
+        }
+        .chip--selected:hover {
+            background: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        .chip--status-success {
+            background: #DCFCE7;
+            color: #166534;
+            border-color: transparent;
+        }
+        .chip--status-warning {
+            background: #FEF3C7;
+            color: #92400E;
+            border-color: transparent;
+        }
+        .chip--status-error {
+            background: #FEE2E2;
+            color: #991B1B;
+            border-color: transparent;
+        }
+
+        /* ===== INPUTS ===== */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+        .input-group label {
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .input-group .helper {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .input {
+            width: 100%;
+            height: 42px;
+            padding: 0 14px;
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-dark);
+            background: var(--bg-surface);
+            border: 1.5px solid var(--border-med);
+            border-radius: var(--radius-sm);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        .input::placeholder {
+            color: var(--text-light);
+        }
+        .input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.15);
+        }
+        .input--error {
+            border-color: var(--error);
+        }
+        .input--error:focus {
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+        }
+        .input:disabled {
+            background: #F5F5F4;
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* ===== CHECKBOX / RADIO ===== */
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: var(--space-10, 10px);
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+        }
+        .control-group input[type="checkbox"],
+        .control-group input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            accent-color: var(--primary);
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--border-med);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .control-group input[type="radio"] {
+            border-radius: 50%;
+        }
+        .control-group input:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* ===== TOOLTIP (demo) ===== */
+        .tooltip-trigger {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+        .tooltip-trigger .tooltip {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-dark);
+            color: #FFFFFF;
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 400;
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            max-width: 220px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition-fast);
+            z-index: 100;
+        }
+        .tooltip-trigger .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--text-dark);
+        }
+        .tooltip-trigger:hover .tooltip {
+            opacity: 1;
+        }
+
+        /* ===== HEADER / NAV ===== */
+        .site-header {
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border-light);
+            padding: var(--space-16) 0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 251, 245, 0.92);
+        }
+        .site-header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-16);
+        }
+        .site-header .logo {
+            font-family: var(--font-headline);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+        .site-header .logo span {
+            color: var(--primary);
+        }
+        .site-header .logo .tagline {
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            display: none;
+        }
+        @media (min-width: 640px) {
+            .site-header .logo .tagline {
+                display: inline;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: var(--space-24);
+            list-style: none;
+        }
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--text-dark);
+        }
+        .nav-links a.active {
+            color: var(--primary);
+        }
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+        }
+
+        /* Mobile nav toggle */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--space-4);
+        }
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: all var(--transition-fast);
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: var(--space-16) 0;
+                gap: var(--space-12);
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .site-header .container {
+                flex-wrap: wrap;
+            }
+            .nav-actions .btn--ghost {
+                display: none;
+            }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: var(--space-64) 0 var(--space-48);
+            background: var(--bg-page);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-48);
+            align-items: center;
+        }
+        .hero__content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-24);
+        }
+        .hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-8);
+            background: #FDF6EC;
+            color: var(--primary);
+            padding: 4px 14px 4px 10px;
+            border-radius: var(--radius-full);
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 600;
+            width: fit-content;
+            border: 1px solid rgba(194, 65, 12, 0.15);
+        }
+        .hero__badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--success);
+            display: inline-block;
+        }
+        .hero h1 {
+            font-family: var(--font-headline);
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.12;
+            letter-spacing: 0.01em;
+        }
+        .hero h1 .highlight {
+            color: var(--primary);
+            position: relative;
+        }
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: rgba(194, 65, 12, 0.15);
+            border-radius: 4px;
+            z-index: -1;
+        }
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 480px;
+        }
+        .hero__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-16);
+            margin-top: var(--space-8);
+        }
+        .hero__stats {
+            display: flex;
+            gap: var(--space-32);
+            margin-top: var(--space-8);
+            padding-top: var(--space-24);
+            border-top: 1px solid var(--border-light);
+        }
+        .hero__stats .stat {
+            display: flex;
+            flex-direction: column;
+        }
+        .hero__stats .stat .number {
+            font-family: var(--font-headline);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .hero__stats .stat .label {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .hero__image {
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            background: #EDE8E0;
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+        .hero__image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+        .hero__image .floating-badge {
+            position: absolute;
+            bottom: var(--space-24);
+            left: var(--space-24);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+            box-shadow: 0 4px 16px rgba(28, 25, 23, 0.06);
+        }
+        .hero__image .floating-badge .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-full);
+            background: #D4A373;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .hero__image .floating-badge .info {
+            display: flex;
+            flex-direction: column;
+        }
+        .hero__image .floating-badge .info .name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .hero__image .floating-badge .info .detail {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 1024px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: var(--space-32);
+            }
+            .hero h1 {
+                font-size: 40px;
+            }
+            .hero__image img {
+                height: 320px;
+            }
+        }
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero__stats {
+                flex-wrap: wrap;
+                gap: var(--space-16);
+            }
+            .hero__image .floating-badge {
+                bottom: var(--space-12);
+                left: var(--space-12);
+                padding: 10px 14px;
+            }
+            .hero__image .floating-badge .avatar {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+        }
+
+        /* ===== SECTION COMMON ===== */
+        .section {
+            padding: var(--space-64) 0;
+        }
+        .section--alt {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .section__header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-16);
+            margin-bottom: var(--space-32);
+        }
+        .section__header h2 {
+            font-family: var(--font-headline);
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        .section__header .sub {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        /* ===== CATEGORY TAGS ===== */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: var(--space-16);
+        }
+        .category-tag {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-8);
+            padding: var(--space-20) var(--space-12);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+            text-align: center;
+        }
+        .category-tag:hover {
+            border-color: var(--tertiary);
+            background: #F8FAF4;
+            transform: translateY(-2px);
+        }
+        .category-tag .icon {
+            font-size: 28px;
+        }
+        .category-tag .label {
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .category-tag .count {
+            font-size: 11px;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+        .category-tag .badge {
+            background: var(--tertiary);
+            color: #fff;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 2px 10px;
+            border-radius: var(--radius-full);
+            margin-top: var(--space-4);
+        }
+
+        /* ===== PRODUCT GRID ===== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: var(--space-24);
+        }
+
+        .product-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: border-color var(--transition-fast);
+        }
+        .product-card:hover {
+            border-color: var(--border-med);
+        }
+        .product-card__image {
+            position: relative;
+            background: #EDE8E0;
+            overflow: hidden;
+        }
+        .product-card__image img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        .product-card:hover .product-card__image img {
+            transform: scale(1.02);
+        }
+        .product-card__image .tag {
+            position: absolute;
+            top: var(--space-12);
+            left: var(--space-12);
+            background: var(--tertiary);
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+        }
+        .product-card__image .seller-badge {
+            position: absolute;
+            bottom: var(--space-12);
+            right: var(--space-12);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-full);
+            padding: 4px 12px 4px 8px;
+            display: flex;
+            align-items: center;
+            gap: var(--space-6);
+            font-size: 12px;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(28, 25, 23, 0.06);
+        }
+        .product-card__image .seller-badge .avatar-sm {
+            width: 22px;
+            height: 22px;
+            border-radius: var(--radius-full);
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+        }
+        .product-card__body {
+            padding: var(--space-16);
+        }
+        .product-card__body .product-title {
+            font-family: var(--font-headline);
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: var(--space-4);
+        }
+        .product-card__body .product-title a {
+            color: var(--text-dark);
+        }
+        .product-card__body .product-title a:hover {
+            color: var(--primary);
+        }
+        .product-card__body .product-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: var(--space-8);
+        }
+        .product-card__body .product-meta .material {
+            background: #F8FAF4;
+            color: var(--tertiary);
+            padding: 2px 10px;
+            border-radius: var(--radius-full);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+        .product-card__body .product-price {
+            font-family: var(--font-headline);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .product-card__body .product-price .unit {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-muted);
+            font-family: var(--font-body);
+        }
+        .product-card__body .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: var(--space-12);
+            padding-top: var(--space-12);
+            border-top: 1px solid var(--border-light);
+        }
+        .product-card__body .product-footer .seller-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+        .product-card__body .product-footer .seller-info .avatar-xs {
+            width: 26px;
+            height: 26px;
+            border-radius: var(--radius-full);
+            background: #D4A373;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .product-card__body .product-footer .seller-info .seller-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        .product-card__body .product-footer .seller-info .seller-location {
+            font-size: 11px;
+            color: var(--text-light);
+        }
+        .product-card__body .product-footer .rating {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .product-card__body .product-footer .rating .stars {
+            color: var(--warning);
+            letter-spacing: 1px;
+        }
+
+        /* ===== SELLER HIGHLIGHT ===== */
+        .seller-spotlight {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-32);
+            align-items: center;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            padding: 0;
+        }
+        .seller-spotlight__image {
+            background: #EDE8E0;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .seller-spotlight__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 4 / 3;
+        }
+        .seller-spotlight__content {
+            padding: var(--space-32) var(--space-32) var(--space-32) 0;
+        }
+        .seller-spotlight__content .overline {
+            color: var(--secondary);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+        }
+        .seller-spotlight__content h3 {
+            font-family: var(--font-headline);
+            font-size: 28px;
+            font-weight: 600;
+            margin: var(--space-8) 0 var(--space-12);
+        }
+        .seller-spotlight__content p {
+            color: var(--text-muted);
+            margin-bottom: var(--space-16);
+        }
+        .seller-spotlight__content .seller-detail {
+            display: flex;
+            align-items: center;
+            gap: var(--space-16);
+            margin-bottom: var(--space-20);
+        }
+        .seller-spotlight__content .seller-detail .avatar-lg {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-full);
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .seller-spotlight__content .seller-detail .info .name {
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .seller-spotlight__content .seller-detail .info .location {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        .seller-spotlight__content .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-8);
+        }
+        .seller-spotlight__content .tags .tag {
+            background: #F8FAF4;
+            color: var(--tertiary);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            border: 1px solid rgba(54, 83, 20, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .seller-spotlight {
+                grid-template-columns: 1fr;
+            }
+            .seller-spotlight__content {
+                padding: var(--space-24);
+            }
+            .seller-spotlight__image {
+                min-height: 200px;
+            }
+        }
+
+        /* ===== REVIEWS / COMMUNITY ===== */
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: var(--space-24);
+        }
+        .review-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: var(--space-20);
+            transition: border-color var(--transition-fast);
+        }
+        .review-card:hover {
+            border-color: var(--border-med);
+        }
+        .review-card .review-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+            margin-bottom: var(--space-12);
+        }
+        .review-card .review-header .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: #D4A373;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .review-card .review-header .info .name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .review-card .review-header .info .detail {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .review-card .review-stars {
+            color: var(--warning);
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: var(--space-8);
+        }
+        .review-card .review-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        .review-card .review-image {
+            margin-top: var(--space-12);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: #EDE8E0;
+        }
+        .review-card .review-image img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+
+        /* ===== NEWSLETTER ===== */
+        .newsletter {
+            background: var(--bg-surface);
+            border: 2px solid var(--border-med);
+            border-radius: var(--radius-xl);
+            padding: var(--space-48);
+            text-align: center;
+        }
+        .newsletter h3 {
+            font-family: var(--font-headline);
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: var(--space-8);
+        }
+        .newsletter p {
+            color: var(--text-muted);
+            max-width: 480px;
+            margin: 0 auto var(--space-24);
+        }
+        .newsletter form {
+            display: flex;
+            max-width: 480px;
+            margin: 0 auto;
+            gap: var(--space-12);
+        }
+        .newsletter form input {
+            flex: 1;
+        }
+        @media (max-width: 480px) {
+            .newsletter form {
+                flex-direction: column;
+            }
+            .newsletter {
+                padding: var(--space-24);
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-light);
+            padding: var(--space-48) 0 var(--space-24);
+        }
+        .site-footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-32);
+        }
+        .site-footer .brand .logo {
+            font-family: var(--font-headline);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: var(--space-8);
+        }
+        .site-footer .brand .logo span {
+            color: var(--primary);
+        }
+        .site-footer .brand p {
+            font-size: 14px;
+            color: var(--text-muted);
+            max-width: 280px;
+        }
+        .site-footer .brand .social {
+            display: flex;
+            gap: var(--space-12);
+            margin-top: var(--space-16);
+        }
+        .site-footer .brand .social a {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--text-muted);
+            transition: all var(--transition-fast);
+        }
+        .site-footer .brand .social a:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: #FDF6EC;
+        }
+        .site-footer h4 {
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-dark);
+            margin-bottom: var(--space-12);
+        }
+        .site-footer ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-8);
+        }
+        .site-footer ul a {
+            font-size: 14px;
+            color: var(--text-muted);
+            transition: color var(--transition-fast);
+        }
+        .site-footer ul a:hover {
+            color: var(--primary);
+        }
+        .site-footer .bottom {
+            grid-column: 1 / -1;
+            border-top: 1px solid var(--border-light);
+            padding-top: var(--space-24);
+            margin-top: var(--space-24);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-12);
+            font-size: 13px;
+            color: var(--text-light);
+        }
+        .site-footer .bottom a {
+            color: var(--text-light);
+        }
+        .site-footer .bottom a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .site-footer .container {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-24);
+            }
+            .site-footer .brand {
+                grid-column: 1 / -1;
+            }
+        }
+        @media (max-width: 480px) {
+            .site-footer .container {
+                grid-template-columns: 1fr;
+            }
+            .site-footer .bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ===== RESPONSIVE HELPERS ===== */
+        @media (max-width: 640px) {
+            .section {
+                padding: var(--space-48) 0;
+            }
+            .section__header h2 {
+                font-size: 26px;
+            }
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: var(--space-16);
+            }
+            .category-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: var(--space-12);
+            }
+            .review-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-up {
+            animation: fadeUp 0.6s ease forwards;
+        }
+        .animate-fade-up.delay-1 {
+            animation-delay: 0.1s;
+            opacity: 0;
+        }
+        .animate-fade-up.delay-2 {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+        .animate-fade-up.delay-3 {
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+        .animate-fade-up.delay-4 {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header" role="banner">
+        <div class="container">
+            <div class="logo">
+                <span>ANGKASARIA</span>
+                <span class="tagline">· Handmade Marketplace</span>
+            </div>
+
+            <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="nav-links" role="navigation" aria-label="Main navigation">
+                <a href="#" class="active">Home</a>
+                <a href="#">Makers</a>
+                <a href="#">Collections</a>
+                <a href="#">Journal</a>
+                <a href="#">About</a>
+                <div class="nav-actions">
+                    <a href="#" class="btn btn--ghost btn--small">Sign In</a>
+                    <a href="#" class="btn btn--primary btn--small">Sell</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-label="Marketplace hero">
+        <div class="container">
+            <div class="hero__content animate-fade-up">
+                <div class="hero__badge">
+                    <span class="dot"></span>
+                    Community of 2,400+ makers
+                </div>
+                <h1>
+                    Where every piece<br />
+                    <span class="highlight">tells a story</span>
+                </h1>
+                <p class="body-large">
+                    Discover handcrafted goods from Indonesia's most talented artisans.
+                    Each purchase supports a maker and preserves a tradition.
+                </p>
+                <div class="hero__actions">
+                    <a href="#" class="btn btn--primary btn--large">Explore collections</a>
+                    <a href="#" class="btn btn--secondary btn--large">Meet the makers</a>
+                </div>
+                <div class="hero__stats">
+                    <div class="stat">
+                        <span class="number">2.4K+</span>
+                        <span class="label">Artisan makers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">12K+</span>
+                        <span class="label">Handmade pieces</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">4.9★</span>
+                        <span class="label">Community rating</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero__image animate-fade-up delay-1">
+                <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='420' viewBox='0 0 600 420'%3E%3Crect width='600' height='420' fill='%23EDE8E0'/%3E%3Ccircle cx='200' cy='180' r='60' fill='%23D4A373' opacity='0.4'/%3E%3Ccircle cx='400' cy='240' r='80' fill='%23C2410C' opacity='0.15'/%3E%3Cpath d='M100 320 L200 180 L300 260 L400 160 L500 300 L450 360 L150 360 L100 320Z' fill='%23C2410C' opacity='0.1'/%3E%3Crect x='220' y='120' width='160' height='180' rx='8' fill='%23D4A373' opacity='0.3'/%3E%3Crect x='340' y='200' width='120' height='100' rx='8' fill='%23365314' opacity='0.2'/%3E%3C/svg%3E"
+                alt="A curated collection of handmade ceramics, textiles, and woodcraft"
+                loading="eager"
+                />
+                <div class="floating-badge">
+                    <div class="avatar">W</div>
+                    <div class="info">
+                        <span class="name">Wayang Studio</span>
+                        <span class="detail">Featured maker · Yogyakarta</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CATEGORIES ===== -->
+    <section class="section" aria-label="Product categories">
+        <div class="container">
+            <div class="section__header">
+                <h2>Browse by craft</h2>
+                <span class="sub">Hand-picked categories</span>
+            </div>
+            <div class="category-grid">
+                <div class="category-tag">
+                    <span class="icon">🏺</span>
+                    <span class="label">Ceramics</span>
+                    <span class="count">342 pieces</span>
+                    <span class="badge">hand-thrown</span>
+                </div>
+                <div class="category-tag">
+                    <span class="icon">🧵</span>
+                    <span class="label">Textiles</span>
+                    <span class="count">518 pieces</span>
+                    <span class="badge">woven</span>
+                </div>
+                <div class="category-tag">
+                    <span class="icon">🪵</span>
+                    <span class="label">Woodcraft</span>
+                    <span class="count">267 pieces</span>
+                    <span class="badge">carved</span>
+                </div>
+                <div class="category-tag">
+                    <span class="icon">💍</span>
+                    <span class="label">Jewelry</span>
+                    <span class="count">193 pieces</span>
+                    <span class="badge">hand-forged</span>
+                </div>
+                <div class="category-tag">
+                    <span class="icon">🧺</span>
+                    <span class="label">Basketry</span>
+                    <span class="count">146 pieces</span>
+                    <span class="badge">natural fiber</span>
+                </div>
+                <div class="category-tag">
+                    <span class="icon">🕯️</span>
+                    <span class="label">Natural Dyes</span>
+                    <span class="count">98 pieces</span>
+                    <span class="badge">plant-based</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURED PRODUCTS ===== -->
+    <section class="section section--alt" aria-label="Featured products">
+        <div class="container">
+            <div class="section__header">
+                <h2>From the workshop</h2>
+                <a href="#" class="btn btn--ghost btn--small">View all →</a>
+            </div>
+
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <article class="product-card animate-fade-up delay-1">
+                    <div class="product-card__image">
+                        <img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23EDE8E0'/%3E%3Ccircle cx='200' cy='150' r='70' fill='%23D4A373' opacity='0.35'/%3E%3Crect x='140' y='100' width='120' height='100' rx='12' fill='%23C2410C' opacity='0.15'/%3E%3C/svg%3E"
+                        alt="Hand-thrown stoneware bowl"
+                        loading="lazy"
+                        />
+                        <span class="tag">Handmade</span>
+                        <div class="seller-badge">
+                            <span class="avatar-sm">A</span>
+                            Ayu Ceramics
+                        </div>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-title"><a href="#">Rustic Stoneware Bowl</a></h3>
+                        <div class="product-meta">
+                            <span>hand-thrown</span>
+                            <span class="material">stoneware</span>
+                        </div>
+                        <div class="product-price">
+                            $72 <span class="unit">USD</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="seller-info">
+                                <span class="avatar-xs">A</span>
+                                <div>
+                                    <div class="seller-name">Ayu Ceramics</div>
+                                    <div class="seller-location">Bali, Indonesia</div>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">★★★★★</span>
+                                <span>(24)</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 2 -->
+                <article class="product-card animate-fade-up delay-2">
+                    <div class="product-card__image">
+                        <img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23EDE8E0'/%3E%3Cpath d='M120 180 L200 100 L280 180 L200 260 L120 180Z' fill='%23365314' opacity='0.2'/%3E%3Crect x='170' y='130' width='60' height='60' rx='4' fill='%23D4A373' opacity='0.3'/%3E%3C/svg%3E"
+                        alt="Handwoven ikat textile"
+                        loading="lazy"
+                        />
+                        <span class="tag">Made to order</span>
+                        <div class="seller-badge">
+                            <span class="avatar-sm">W</span>
+                            Woven Heritage
+                        </div>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-title"><a href="#">Ikat Table Runner</a></h3>
+                        <div class="product-meta">
+                            <span>hand-woven</span>
+                            <span class="material">cotton</span>
+                        </div>
+                        <div class="product-price">
+                            $48 <span class="unit">USD</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="seller-info">
+                                <span class="avatar-xs">W</span>
+                                <div>
+                                    <div class="seller-name">Woven Heritage</div>
+                                    <div class="seller-location">Flores, Indonesia</div>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">★★★★★</span>
+                                <span>(18)</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 3 -->
+                <article class="product-card animate-fade-up delay-3">
+                    <div class="product-card__image">
+                        <img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23EDE8E0'/%3E%3Crect x='120' y='100' width='160' height='80' rx='6' fill='%23C2410C' opacity='0.15'/%3E%3Ccircle cx='200' cy='210' r='30' fill='%23D4A373' opacity='0.3'/%3E%3C/svg%3E"
+                        alt="Hand-carved wooden serving board"
+                        loading="lazy"
+                        />
+                        <span class="tag">Eco-friendly</span>
+                        <div class="seller-badge">
+                            <span class="avatar-sm">K</span>
+                            Kayu Studio
+                        </div>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-title"><a href="#">Serving Board · Teak</a></h3>
+                        <div class="product-meta">
+                            <span>hand-carved</span>
+                            <span class="material">teak</span>
+                        </div>
+                        <div class="product-price">
+                            $95 <span class="unit">USD</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="seller-info">
+                                <span class="avatar-xs">K</span>
+                                <div>
+                                    <div class="seller-name">Kayu Studio</div>
+                                    <div class="seller-location">Java, Indonesia</div>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">★★★★★</span>
+                                <span>(31)</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 4 -->
+                <article class="product-card animate-fade-up delay-4">
+                    <div class="product-card__image">
+                        <img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23EDE8E0'/%3E%3Ccircle cx='160' cy='140' r='40' fill='%23D4A373' opacity='0.3'/%3E%3Ccircle cx='240' cy='140' r='40' fill='%23C2410C' opacity='0.15'/%3E%3Crect x='120' y='180' width='160' height='40' rx='20' fill='%23365314' opacity='0.15'/%3E%3C/svg%3E"
+                        alt="Hand-forged brass earrings"
+                        loading="lazy"
+                        />
+                        <span class="tag">Limited</span>
+                        <div class="seller-badge">
+                            <span class="avatar-sm">M</span>
+                            Masa Forge
+                        </div>
+                    </div>
+                    <div class="product-card__body">
+                        <h3 class="product-title"><a href="#">Brass Drop Earrings</a></h3>
+                        <div class="product-meta">
+                            <span>hand-forged</span>
+                            <span class="material">brass</span>
+                        </div>
+                        <div class="product-price">
+                            $34 <span class="unit">USD</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="seller-info">
+                                <span class="avatar-xs">M</span>
+                                <div>
+                                    <div class="seller-name">Masa Forge</div>
+                                    <div class="seller-location">Bandung, Indonesia</div>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">★★★★☆</span>
+                                <span>(9)</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SELLER SPOTLIGHT ===== -->
+    <section class="section" aria-label="Featured maker spotlight">
+        <div class="container">
+            <div class="seller-spotlight">
+                <div class="seller-spotlight__image">
+                    <img
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23EDE8E0'/%3E%3Ccircle cx='300' cy='180' r='120' fill='%23D4A373' opacity='0.25'/%3E%3Crect x='180' y='100' width='240' height='180' rx='12' fill='%23C2410C' opacity='0.1'/%3E%3C/svg%3E"
+                    alt="Wayang Studio workshop"
+                    loading="lazy"
+                    />
+                </div>
+                <div class="seller-spotlight__content">
+                    <span class="overline">✦ Featured maker</span>
+                    <h3>Wayang Studio</h3>
+                    <p class="body">
+                        Hand-thrown stoneware inspired by Javanese shadow puppet traditions.
+                        Each piece is crafted on a kick wheel and glazed with locally-sourced
+                        ash and minerals.
+                    </p>
+                    <div class="seller-detail">
+                        <div class="avatar-lg">W</div>
+                        <div class="info">
+                            <div class="name">Wayang Studio</div>
+                            <div class="location">Yogyakarta, Indonesia · Est. 2018</div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">#stoneware</span>
+                        <span class="tag">#handthrown</span>
+                        <span class="tag">#naturalglaze</span>
+                        <span class="tag">#slowcraft</span>
+                    </div>
+                    <div style="margin-top: var(--space-16);">
+                        <a href="#" class="btn btn--primary btn--small">View studio →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== REVIEWS / COMMUNITY ===== -->
+    <section class="section section--alt" aria-label="Community reviews">
+        <div class="container">
+            <div class="section__header">
+                <h2>From the community</h2>
+                <span class="sub">Real stories from real buyers</span>
+            </div>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="avatar">S</div>
+                        <div class="info">
+                            <div class="name">Sarah M.</div>
+                            <div class="detail">Melbourne, AU · 2 weeks ago</div>
+                        </div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        "The bowl arrived beautifully wrapped with a handwritten note from
+                        the maker. It feels so special to own something made with such care."
+                    </p>
+                    <div class="review-image">
+                        <img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23EDE8E0'/%3E%3Ccircle cx='200' cy='112' r='50' fill='%23D4A373' opacity='0.25'/%3E%3Crect x='140' y='60' width='120' height='100' rx='8' fill='%23C2410C' opacity='0.1'/%3E%3C/svg%3E"
+                        alt="Customer photo of a ceramic bowl"
+                        loading="lazy"
+                        />
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="avatar">J</div>
+                        <div class="info">
+                            <div class="name">James K.</div>
+                            <div class="detail">Singapore · 1 month ago</div>
+                        </div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        "The ikat runner is stunning. The colors are even more vibrant in
+                        person. I love knowing exactly which village it came from."
+                    </p>
+                    <div class="review-image">
+                        <img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23EDE8E0'/%3E%3Crect x='100' y='80' width='200' height='60' rx='4' fill='%23365314' opacity='0.15'/%3E%3C/svg%3E"
+                        alt="Customer photo of ikat textile"
+                        loading="lazy"
+                        />
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="avatar">A</div>
+                        <div class="info">
+                            <div class="name">Amara L.</div>
+                            <div class="detail">Jakarta, ID · 3 weeks ago</div>
+                        </div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">
+                        "I've purchased three pieces from Wayang Studio now. Each one is
+                        unique — you can see the maker's hand in every curve and glaze."
+                    </p>
+                    <div class="review-image">
+                        <img
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23EDE8E0'/%3E%3Ccircle cx='200' cy='112' r='40' fill='%23D4A373' opacity='0.2'/%3E%3C/svg%3E"
+                        alt="Customer photo of pottery collection"
+                        loading="lazy"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== NEWSLETTER ===== -->
+    <section class="section" aria-label="Newsletter signup">
+        <div class="container">
+            <div class="newsletter">
+                <h3>Stories from the workshop</h3>
+                <p class="body">
+                    Join our community of craft lovers. We'll share maker interviews,
+                    behind-the-scenes stories, and early access to new collections.
+                </p>
+                <form action="#" method="post">
+                    <input
+                    type="email"
+                    class="input"
+                    placeholder="Your email address"
+                    required
+                    aria-label="Email address"
+                    />
+                    <button type="submit" class="btn btn--primary">Subscribe</button>
+                </form>
+                <p style="margin-top: var(--space-12); font-size: 12px; color: var(--text-light);">
+                    No spam, unsubscribe anytime. We respect your inbox.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="brand">
+                <div class="logo">ANGKASARIA <span>·</span></div>
+                <p>
+                    A curated marketplace celebrating Indonesia's finest artisans.
+                    Every purchase preserves a craft and supports a community.
+                </p>
+                <div class="social">
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Pinterest">📌</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                    <a href="#" aria-label="WhatsApp">💬</a>
+                </div>
+            </div>
+
+            <div>
+                <h4>Discover</h4>
+                <ul>
+                    <li><a href="#">All makers</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">New arrivals</a></li>
+                    <li><a href="#">Gift guides</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="#">Journal</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Become a maker</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help center</a></li>
+                    <li><a href="#">Shipping info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="bottom">
+                <span>© 2026 PT ANGKASARIA INDAH ABADI · All rights reserved</span>
+                <span>
+                    <a href="#">Privacy</a> ·
+                    <a href="#">Terms</a> ·
+                    <a href="#">Cookies</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SIMPLE TOOLTIP DEMO ===== -->
+    <div style="position: fixed; bottom: 24px; right: 24px; z-index: 200;">
+        <div class="tooltip-trigger">
+            <span class="btn btn--secondary btn--small" style="border-radius: var(--radius-full); padding: 10px 18px;">
+                🌿
+            </span>
+            <span class="tooltip">Every purchase plants a tree</span>
+        </div>
+    </div>
+
+    <script>
+        // Mobile nav toggle – ensure aria-expanded is toggled
+        document.querySelector('.nav-toggle')?.addEventListener('click', function() {
+            const expanded = this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true';
+            this.setAttribute('aria-expanded', expanded);
+            const nav = document.querySelector('.nav-links');
+            if (nav) {
+                nav.classList.toggle('open');
+            }
+        });
+
+        // Close mobile nav on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const nav = document.querySelector('.nav-links');
+                const toggle = document.querySelector('.nav-toggle');
+                if (nav && window.innerWidth <= 768) {
+                    nav.classList.remove('open');
+                    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        // Smooth category tag hover effect (already in CSS)
+        console.log('PT ANGKASARIA INDAH ABADI — Handmade Marketplace');
+    </script>
+
+</body>
+</html>
